@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #04091a; color: #e6eefc; font-family: "Source Sans 3", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #4db8ff; text-decoration: none; }
+  a:hover { color: #8fd6ff; }
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; cursor: pointer; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, image-slot, video { max-width: 100%; }
+  img { height: auto; }
+
+  /* ---- mobile first: base = telas pequenas ---- */
+  h1 { font-size: clamp(28px, 7.2vw, 52px) !important; line-height: 1.14 !important; }
+  h2 { font-size: clamp(23px, 5.2vw, 34px) !important; line-height: 1.25 !important; }
+  h3 { font-size: clamp(20px, 4.4vw, 24px) !important; line-height: 1.3 !important; }
+  p  { font-size: clamp(16px, 1.9vw, 19px); line-height: 1.55; }
+  a, button, summary { min-height: 44px; }
+  summary { display: flex; align-items: center; min-height: 44px; }
+  [data-m="price"] { font-size: clamp(34px, 9vw, 48px) !important; }
+  [data-m="bigline"] { font-size: clamp(20px, 5vw, 26px) !important; }
+  [data-m="stars"] { font-size: clamp(16px, 4vw, 20px) !important; }
+
+  @media (max-width: 1024px) {
+    section { padding-left: 24px !important; padding-right: 24px !important; }
+  }
+  @media (max-width: 880px) {
+    [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    [data-m~="row"] { gap: 28px !important; }
+    section { padding-top: 56px !important; padding-bottom: 56px !important; }
+    a[href*="pay.kiwify.com.br"] { display: flex !important; align-items: center; justify-content: center;
+      width: 100% !important; min-height: 56px; text-align: center !important;
+      font-size: 15px !important; letter-spacing: 0.06em !important; padding: 16px 14px !important; }
+    [data-m="img-tall"] { aspect-ratio: 4/3 !important; }
+    details, [data-m~="card"] { padding: 20px !important; }
+    [data-m~="guarantee"] { text-align: center !important; justify-items: center !important; }
+    [data-m~="guarantee"] img { max-width: 170px !important; }
+  }
+  @media (max-width: 768px) {
+    section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 52px !important; padding-bottom: 52px !important; }
+    [data-m~="row"] { gap: 24px !important; }
+  }
+  @media (max-width: 480px) {
+    section { padding-top: 48px !important; padding-bottom: 48px !important; }
+    [data-m~="row"] { gap: 20px !important; }
+    details, [data-m~="card"] { padding: 18px !important; }
+    [data-m~="guarantee"] img { max-width: 140px !important; }
+  }
+
+  /* ---- CTA fixo no rodapé (mobile) ---- */
+  #cta-fixo { display: none; }
+  @media (max-width: 880px) {
+    #cta-fixo { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+      background: rgba(4,9,26,0.94); backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(43,255,110,0.35); padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      transform: translateY(130%); transition: transform .28s ease; }
+    #cta-fixo[data-visivel="1"] { transform: translateY(0); }
+    #cta-fixo a { display: flex !important; align-items: center; justify-content: center; width: 100%;
+      min-height: 52px; background: #49FF00; color: #04231a; border-radius: 8px;
+      font-family: 'Sora',sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.06em;
+      text-transform: uppercase; text-align: center; white-space: nowrap; }
+    body { padding-bottom: 84px; }
+  }
+</style>
+</helmet>
+
+<div style="width:100%;background:#04091a;overflow:hidden">
+
+  <section style="position:relative;padding:56px 20px 72px;background:radial-gradient(1100px 620px at 78% 8%, rgba(30,110,220,0.42) 0%, rgba(8,20,48,0) 62%), linear-gradient(180deg,#061029 0%,#04091a 100%)">
+    <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center" data-m="row">
+      <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+        <div style="display:flex;align-items:center;gap:12px">
+          
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;color:#9fc4f0">MÉTODO ESCRITÓRIO SEM DOR</div>
+        </div>
+        <h1 style="margin:0;font-family:'Sora',sans-serif;font-weight:800;font-size:52px;line-height:1.08;letter-spacing:-0.02em;color:#ffffff;text-wrap:balance">Em 15 dias, <span style="color: rgb(77, 184, 255);">trabalhe sentado com mais conforto</span>&nbsp;sem trocar sua cadeira</h1>
+        <p style="margin:0;font-size:19px;line-height:1.6;color:#a9bedd;max-width:36em">Um plano prático de <strong style="color:#ffffff">um ajuste por dia</strong> para reorganizar sua estação de trabalho, variar posições e reduzir a sobrecarga de quem passa o dia inteiro na frente do computador.</p>
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(77,184,255,0.08);border:1px solid rgba(77,184,255,0.28);border-radius:10px;padding:12px 16px;align-self:flex-start;font-size:15px;color:#c9dcf5">
+          <span style="color:#4db8ff">▣</span><span>15 missões diárias &nbsp;•&nbsp; leitura no celular &nbsp;•&nbsp; revisão técnica de fisioterapeuta</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+          <a href="https://pay.kiwify.com.br/sqi9oEg" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #04231a; font-family: 'Sora',sans-serif; font-weight: 800; font-size: 17px; letter-spacing: 0.1em; text-transform: uppercase; padding: 19px 38px; border-radius: 8px; box-shadow: 0 0 34px rgba(43,255,110,0.4); background-color: #49FF00" style-hover="background:#5bff90;box-shadow:0 0 46px rgba(43,255,110,0.6)">Quero o método agora</a>
+          <p style="margin: 0; font-size: 14px; color: #7f96ba; max-width: 476px">Acesso imediato por e-mail • Leitura no celular • Garantia incondicional de 07 dias</p>
+        </div>
+      </div>
+      <div data-m="img-tall" style="position:relative;width:100%;aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid rgba(77,184,255,0.35);box-shadow:0 0 70px rgba(30,110,220,0.35)">
+        <image-slot id="hero-desk" shape="rect" placeholder="Foto ultrarrealista: pessoa adulta no computador, iluminação azulada, fim do expediente"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:76px 20px;background:#04091a">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:26px;text-align:center;align-items:center">
+      <p style="margin:0;font-size:15px;letter-spacing:0.12em;text-transform:uppercase;color:#7f96ba;font-family:'Sora',sans-serif;font-weight:600">O problema pode não ser a sua cadeira</p>
+      <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:34px;line-height:1.25;color:#ffffff;max-width:26em">O desconforto vem do <span style="color:#4db8ff">acúmulo de dezenas de decisões pequenas</span> ao longo de dez horas.</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;text-align:left">
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border:1px solid rgba(77,184,255,0.22);border-radius:14px;padding:24px">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#4db8ff;letter-spacing:0.1em">11H</div>
+          <p style="margin:10px 0 0;font-size:16px;line-height:1.5;color:#a9bedd">O pescoço já está rígido.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border:1px solid rgba(77,184,255,0.22);border-radius:14px;padding:24px">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#4db8ff;letter-spacing:0.1em">15H</div>
+          <p style="margin:10px 0 0;font-size:16px;line-height:1.5;color:#a9bedd">Você nem percebe mais como está sentado.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border:1px solid rgba(43,255,110,0.3);border-radius:14px;padding:24px">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2bff6e;letter-spacing:0.1em">18H</div>
+          <p style="margin:10px 0 0;font-size:16px;line-height:1.5;color:#a9bedd">Levantar da cadeira virou um esforço.</p>
+        </div>
+      </div>
+      <p style="margin:0;font-size:19px;line-height:1.65;color:#a9bedd;max-width:44em">A maioria tenta resolver isso com um vídeo de alongamento salvo no Instagram, ou comprando uma cadeira mais cara. E continua terminando o expediente do mesmo jeito. O Método Escritório Sem Dor ataca a rotina inteira: <strong style="color:#ffffff">um ajuste por dia</strong>, em missões que cabem no seu expediente real.</p>
+    </div>
+  </section>
+
+  <section style="padding:70px 20px;background:linear-gradient(180deg,#04091a 0%,#071530 50%,#04091a 100%)">
+    <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+      <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:32px;line-height:1.2;color:#ffffff"><span style="color:#4db8ff">Se você trabalha sentado</span> oito, dez ou mais horas por dia, provavelmente já viveu isso:</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(77,184,255,0.07);border:1px solid rgba(77,184,255,0.18);border-radius:10px;padding:18px"><span style="color:#ff6b6b;flex:none;font-size:15px">✕</span><p style="margin:0;font-size:17px;line-height:1.45;color:#c9dcf5">Termina a tarde com a lombar pesada e a sensação de corpo travado.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(77,184,255,0.07);border:1px solid rgba(77,184,255,0.18);border-radius:10px;padding:18px"><span style="color:#ff6b6b;flex:none;font-size:15px">✕</span><p style="margin:0;font-size:17px;line-height:1.45;color:#c9dcf5">Já assistiu vídeos soltos de alongamento, mas nunca virou rotina.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(77,184,255,0.07);border:1px solid rgba(77,184,255,0.18);border-radius:10px;padding:18px"><span style="color:#ff6b6b;flex:none;font-size:15px">✕</span><p style="margin:0;font-size:17px;line-height:1.45;color:#c9dcf5">Percebe o ombro subindo perto do prazo, e só relaxa quando lembra.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(77,184,255,0.07);border:1px solid rgba(77,184,255,0.18);border-radius:10px;padding:18px"><span style="color:#ff6b6b;flex:none;font-size:15px">✕</span><p style="margin:0;font-size:17px;line-height:1.45;color:#c9dcf5">Almoça na frente do computador quase todo dia, mesmo sabendo que não deveria.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(77,184,255,0.07);border:1px solid rgba(77,184,255,0.18);border-radius:10px;padding:18px"><span style="color:#ff6b6b;flex:none;font-size:15px">✕</span><p style="margin:0;font-size:17px;line-height:1.45;color:#c9dcf5">Fica horas sem levantar da cadeira e nem sente o tempo passar.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(77,184,255,0.07);border:1px solid rgba(77,184,255,0.18);border-radius:10px;padding:18px"><span style="color:#ff6b6b;flex:none;font-size:15px">✕</span><p style="margin:0;font-size:17px;line-height:1.45;color:#c9dcf5">Desconfia que o monitor, a cadeira ou a mesa estão errados, mas não sabe o que ajustar primeiro.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(77,184,255,0.07);border:1px solid rgba(77,184,255,0.18);border-radius:10px;padding:18px"><span style="color:#ff6b6b;flex:none;font-size:15px">✕</span><p style="margin:0;font-size:17px;line-height:1.45;color:#c9dcf5">Chega em casa e a única vontade é deitar.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(43,255,110,0.08);border:1px solid rgba(43,255,110,0.3);border-radius:10px;padding:18px"><span style="color:#2bff6e;flex:none;font-size:15px">✓</span><p style="margin:0;font-size:17px;line-height:1.45;color:#ffffff;font-weight:600">Nada disso é preguiça. É a consequência de uma rotina que ninguém te ensinou a organizar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:76px 20px;background:#04091a">
+    <div style="max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:38px">
+      <div style="text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center">
+        <p style="margin:0;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#7f96ba;font-family:'Sora',sans-serif;font-weight:600">O mecanismo</p>
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:34px;line-height:1.22;color:#ffffff;max-width:28em">Não existe postura perfeita que você mantenha por oito horas. Existe o <span style="color:#4db8ff">Protocolo 3M</span>.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+        <div style="background:linear-gradient(160deg,#0e2348 0%,#071530 100%);border:1px solid rgba(77,184,255,0.28);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#4db8ff">Mudar</div>
+          <p style="margin:0;font-size:16px;line-height:1.55;color:#a9bedd">de posição antes do corpo pedir, ajustando encosto, altura e apoio ao longo do dia.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0e2348 0%,#071530 100%);border:1px solid rgba(77,184,255,0.28);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#4db8ff">Movimentar</div>
+          <p style="margin:0;font-size:16px;line-height:1.55;color:#a9bedd">com micropausas curtas e movimentos leves que cabem entre uma reunião e outra.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0e2348 0%,#071530 100%);border:1px solid rgba(77,184,255,0.28);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#4db8ff">Monitorar</div>
+          <p style="margin:0;font-size:16px;line-height:1.55;color:#a9bedd">onde, quando e em qual tarefa o desconforto aparece, para parar de agir no escuro.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:center;background:linear-gradient(160deg,#0a1c3a 0%,#050d20 100%);border:1px solid rgba(77,184,255,0.2);border-radius:18px;padding:30px" data-m="row card">
+        <div style="position:relative;width:100%;aspect-ratio:1/1">
+          <image-slot id="estacao" shape="rect" fit="contain" src="uploads/Co%CC%81pia%20de%20PACK%20DE%20MOCKUP%20EDITA%CC%81VEIS.png" placeholder="Mockup do e-book em notebook, tablet e celular"></image-slot>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:24px;line-height:1.25;color:#ffffff">Instalado em 15 dias, um ajuste por vez</h3>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;gap:14px;font-size:16px;color:#a9bedd"><strong style="font-family:'Sora',sans-serif;color:#4db8ff;flex:none;width:60px">Dia 1</strong><span>Você só observa.</span></div>
+            <div style="display:flex;gap:14px;font-size:16px;color:#a9bedd"><strong style="font-family:'Sora',sans-serif;color:#4db8ff;flex:none;width:60px">Dia 3</strong><span>Apoio dos pés e cadeira.</span></div>
+            <div style="display:flex;gap:14px;font-size:16px;color:#a9bedd"><strong style="font-family:'Sora',sans-serif;color:#4db8ff;flex:none;width:60px">Dia 4</strong><span>Altura da tela.</span></div>
+            <div style="display:flex;gap:14px;font-size:16px;color:#a9bedd"><strong style="font-family:'Sora',sans-serif;color:#4db8ff;flex:none;width:60px">Dia 6</strong><span>Entra a primeira micropausa.</span></div>
+            <div style="display:flex;gap:14px;font-size:16px;color:#a9bedd"><strong style="font-family:'Sora',sans-serif;color:#4db8ff;flex:none;width:60px">Dia 14</strong><span>Você monta seu sistema pessoal.</span></div>
+            <div style="display:flex;gap:14px;font-size:16px;color:#a9bedd"><strong style="font-family:'Sora',sans-serif;color:#2bff6e;flex:none;width:60px">Dia 15</strong><span>Compara com o diagnóstico do começo.</span></div>
+          </div>
+          <p style="margin:4px 0 0;font-size:16px;line-height:1.55;color:#7f96ba">Tentar mudar tudo numa segunda-feira é exatamente o que já não funcionou antes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:76px 20px;background:linear-gradient(180deg,#04091a 0%,#071530 100%)">
+    <div style="max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:30px">
+      <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:32px;line-height:1.2;color:#ffffff;text-align:center">O que muda no <span style="color:#4db8ff">seu expediente</span></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Saber exatamente <strong style="color:#ffffff">o que ajustar primeiro</strong>, sem gastar nada, usando o que já tem em casa.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Parar de depender de força de vontade: cada micropausa é <strong style="color:#ffffff">ancorada em algo que já acontece</strong> no seu dia.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Identificar qual tarefa específica está mais associada ao seu desconforto — e adaptar aquela tarefa.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Montar um home office funcional em <strong style="color:#ffffff">três níveis</strong>, do orçamento zero à estrutura completa.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Ter <strong style="color:#4db8ff">15 movimentos leves</strong> ilustrados passo a passo, com execução e quando interromper.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Reconhecer os sinais que pedem avaliação profissional, em vez de se autodiagnosticar na internet.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Ter um registro do seu padrão e, no Dia 15, enxergar preto no branco o que mudou.</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(77,184,255,0.16);border-radius:10px;padding:20px"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#c9dcf5">Terminar com um <strong style="color:#ffffff">plano de continuidade semanal</strong>, para não virar mais um começo abandonado.</p></div>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <a href="https://pay.kiwify.com.br/sqi9oEg" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #04231a; font-family: 'Sora',sans-serif; font-weight: 800; font-size: 17px; letter-spacing: 0.1em; text-transform: uppercase; padding: 19px 40px; border-radius: 8px; box-shadow: 0 0 34px rgba(43,255,110,0.4); background-color: #64FA00" style-hover="background:#5bff90">Começar meus 15 dias</a>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ mostrarProvaSocial }}" hint-placeholder-val="{{ true }}">
+  
+  </sc-if>
+
+  <section id="oferta" style="padding:80px 20px;background:radial-gradient(900px 500px at 50% 0%, rgba(30,110,220,0.35) 0%, rgba(8,20,48,0) 65%), #050d20">
+    <div style="max-width:980px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;align-items:center" data-m="row">
+      <div data-m="img-tall" style="position:relative;width:100%;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid rgba(77,184,255,0.3);box-shadow:0 0 60px rgba(30,110,220,0.35)">
+        <image-slot id="mockup" shape="rect" placeholder="Mockup ultrarrealista do e-book na tela de um celular, formato vertical"></image-slot>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:800;font-size:32px;line-height:1.15;color:#ffffff">O que você <span style="color:#2bff6e">recebe hoje</span></h2>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="display:flex;gap:13px;align-items:baseline"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#a9bedd"><strong style="color:#ffffff">E-book O Método Escritório Sem Dor</strong> — plano completo de 15 dias, otimizado para celular <span style="color: #4DB8FF; white-space: nowrap">(R$ 97)</span></p></div>
+          <div style="display:flex;gap:13px;align-items:baseline"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#a9bedd"><strong style="color:#ffffff">Bônus 1: Biblioteca de 15 Movimentos Leves</strong> — passo a passo, adaptação mais fácil e quando parar <span style="color: #4DB8FF; white-space: nowrap">(R$ 47)</span></p></div>
+          <div style="display:flex;gap:13px;align-items:baseline"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#a9bedd"><strong style="color:#ffffff">Bônus 2: Checklist da Estação de Trabalho</strong> — uma página para imprimir e deixar na mesa <span style="color: #4DB8FF; white-space: nowrap">(R$ 27)</span></p></div>
+          <div style="display:flex;gap:13px;align-items:baseline"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#a9bedd"><strong style="color:#ffffff">Bônus 3: Mapa do Desconforto</strong> — registro de onde, quando e em qual tarefa aparece <span style="color:#4db8ff;white-space:nowrap">(R$ 27)</span></p></div>
+          <div style="display:flex;gap:13px;align-items:baseline"><span style="color:#2bff6e;flex:none">✓</span><p style="margin:0;font-size:16px;line-height:1.5;color:#a9bedd"><strong style="color:#ffffff">Bônus 4: 4 Rotinas Prontas</strong> — home office, escritório, notebook e +10h no computador <span style="color:#4db8ff;white-space:nowrap">(R$ 47)</span></p></div>
+        </div>
+        <div style="background:linear-gradient(160deg,#0e2348 0%,#071530 100%);border:1px solid rgba(43,255,110,0.35);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px" data-m="card">
+          <div style="font-size: 16px; color: #FFFFFF; font-family: Montserrat; font-weight: 700">Valor total: <span style="text-decoration: line-through; color: #FF0000; font-family: Montserrat">R$245</span></div>
+          <div style="display:flex;align-items:baseline;gap:10px"><span style="font-size: 17px; color: #FDFDFD; font-weight: 800">Hoje por</span><span style="font-family: 'Sora',sans-serif; font-weight: 800; font-size: 48px; line-height: 1; color: #4BFF00" data-m="price">{{ precoAtual }}</span></div>
+          <a href="https://pay.kiwify.com.br/sqi9oEg" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; color: #04231a; font-family: 'Sora',sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.09em; text-transform: uppercase; padding: 19px; border-radius: 8px; margin-top: 6px; box-shadow: 0 0 34px rgba(43,255,110,0.4); background-color: #32FF00" style-hover="background:#5bff90">Começar meus 15 dias</a>
+          <p style="margin:0;font-size:14px;color:#7f96ba;text-align:center">Cartão ou Pix&nbsp; • Acesso imediato após a confirmação</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ mostrarUrgencia }}" hint-placeholder-val="{{ true }}">
+  
+  </sc-if>
+
+  <section style="padding:78px 20px;background:#04091a">
+    <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+      <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:32px;line-height:1.2;color:#ffffff">Provavelmente você está <span style="color:#4db8ff">pensando…</span></h2>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border-left:3px solid #2bff6e;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#ffffff">“Já tentei alongamento e não adiantou.”</p>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#a9bedd">Faz sentido — e essa é exatamente a premissa do método. Movimento isolado no fim do dia dificilmente compensa dez horas de estação mal organizada e nenhuma variação de posição. Aqui o alongamento é a menor parte. A maior parte é como o seu dia inteiro está montado.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border-left:3px solid #2bff6e;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#ffffff">“Não tenho tempo para isso no meio do expediente.”</p>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#a9bedd">Cada dia tem uma missão principal e uma ação de dois minutos. Vários ajustes são feitos uma vez só, como a altura da tela ou o apoio dos pés, e continuam trabalhando por você depois disso. As pausas são de 30 a 60 segundos, ancoradas no que você já faz — encher a garrafa de água, encerrar uma reunião.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border-left:3px solid #2bff6e;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#ffffff">“Isso é assunto de fisioterapeuta, um e-book não resolve.”</p>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#a9bedd">Concordo em parte, e por isso o material é explícito: é educativo e não substitui avaliação, diagnóstico ou acompanhamento profissional. O conteúdo tem revisão técnica de fisioterapeuta e uma seção inteira sobre os sinais que exigem atendimento. O que ele resolve é outra coisa — a organização da sua rotina e do seu ambiente.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border-left:3px solid #2bff6e;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#ffffff">“Vou comprar e não vou aplicar.”</p>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#a9bedd">Por isso o formato é de missão diária, e não um manual de 100 páginas para ler de uma vez. Você lê poucos minutos, executa um ajuste, registra o que sentiu e segue. E se mesmo assim não fizer sentido, a garantia cobre integralmente.</p>
+        </div>
+        <div style="background:linear-gradient(160deg,#0c1e3f 0%,#071530 100%);border-left:3px solid #2bff6e;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px">
+          <p style="margin:0;font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#ffffff">“Vou ter que comprar cadeira, monitor e suporte.”</p>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#a9bedd">Não. O primeiro nível do método é construído inteiramente <strong style="color:#2bff6e">sem gastar nada</strong>: caixa firme, ajuste de altura, reorganização dos objetos e aproximação da cadeira. As recomendações de compra só aparecem depois, e sem indicação de marca.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:70px 20px;background:linear-gradient(180deg,#04091a 0%,#071530 100%)">
+    <div style="max-width:780px;margin:0 auto;background:linear-gradient(160deg,#0e2348 0%,#050d20 100%);border:1px solid rgba(43,255,110,0.4);border-radius:18px;padding:40px;display:flex;flex-direction:column;gap:16px;text-align:center;align-items:center;box-shadow:0 0 60px rgba(43,255,110,0.12)">
+      
+      <h2 style="margin: 0; font-family: 'Sora',sans-serif; font-weight: 700; font-size: 30px; line-height: 1.2; color: #43FF00">Garantia incondicional de 07 dias</h2>
+      
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#a9bedd;max-width:52em">Você tem tempo de fazer o método inteiro, comparar o diagnóstico do Dia 1 com o do Dia 15, e ainda tem 07 dia de garantia. Se não fizer sentido para a sua rotina, pede o reembolso e recebe 100% do valor de volta, sem justificativa e sem perguntas.</p>
+      <p style="margin:0;font-size:18px;line-height:1.5;color:#ffffff;font-weight:600">O risco fica conosco. Você só fica com o que aplicou.</p>
+    </div>
+  </section>
+
+  
+
+  <section style="padding:88px 20px;background:radial-gradient(900px 500px at 50% 100%, rgba(30,110,220,0.4) 0%, rgba(8,20,48,0) 65%), #050d20">
+    <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:20px;align-items:center;text-align:center">
+      <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:800;font-size:40px;line-height:1.12;letter-spacing:-0.02em;color:#ffffff;text-wrap:balance">Daqui a quinze dias você vai estar sentado <span style="color:#4db8ff">nessa mesma cadeira</span>.</h2>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:#a9bedd">A diferença é se vai estar sentado do mesmo jeito, no mesmo horário, sentindo a mesma coisa às seis da tarde. Ou se vai ter passado esses quinze dias observando, ajustando e montando um sistema que trabalha a seu favor durante todo o expediente.</p>
+      <p style="margin:0;font-size:19px;line-height:1.6;color:#ffffff;font-weight:600">Não é sobre virar especialista em ergonomia. É sobre parar de trabalhar contra o próprio corpo dez horas por dia sem perceber.</p>
+      <a href="https://pay.kiwify.com.br/sqi9oEg" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #04231a; font-family: 'Sora',sans-serif; font-weight: 800; font-size: 19px; letter-spacing: 0.1em; text-transform: uppercase; padding: 22px 42px; border-radius: 8px; margin-top: 6px; box-shadow: 0 0 40px rgba(43,255,110,0.45); background-color: #4FFB00" style-hover="background:#5bff90">PRECISO DISSO!</a>
+      <p style="margin:0;font-size:14px;color:#7f96ba">Acesso imediato • Garantia incondicional de 07 dias&nbsp;</p>
+    </div>
+  </section>
+
+  <section style="padding:70px 20px 86px;background:#04091a">
+    <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:0.62fr 1.38fr;gap:36px;align-items:center;background:linear-gradient(160deg,#0e2348 0%,#050d20 100%);border:1px solid rgba(212,175,55,0.45);border-radius:18px;padding:34px" data-m="row card guarantee">
+      <img src="uploads/Selo-de-Garantia-de-7-Dias-PNG-Transparente-Sem-Fundo-1.png" alt="Selo de garantia de 7 dias" style="width:100%;max-width:230px;justify-self:center;filter:drop-shadow(0 0 28px rgba(212,175,55,0.35))">
+      <div style="border-radius:12px;overflow:hidden;background:#f4f2ee">
+        <div style="background:#215a7d;color:#ffffff;text-align:center;font-family:'Sora',sans-serif;font-weight:800;font-size:26px;letter-spacing:0.04em;padding:16px 20px" data-m="bigline">100% RISCO ZERO</div>
+        <div style="padding:26px 28px 24px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:26px;color:#14161a;letter-spacing:0.02em" data-m="bigline">7 DIAS DE GARANTIA</div>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#3d434d;text-transform:uppercase;letter-spacing:0.02em;max-width:44em">SE POR QUALQUER MOTIVO VOCÊ ACHAR QUE O MATERIAL NÃO É PRA VOCÊ, BASTA SOLICITAR O REEMBOLSO E RECEBA O SEU INVESTIMENTO DE VOLTA.</p>
+          <div data-m="stars" style="color:#f2b705;font-size:20px;letter-spacing:0.3em">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+</div>
+
+<div id="cta-fixo">
+  <a href="https://pay.kiwify.com.br/sqi9oEg" target="_blank" rel="noopener noreferrer">Quero o método agora</a>
+</div></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;precoAtual&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R$ 47&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;urgencia&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bonus&quot;,&quot;lote&quot;,&quot;nenhum&quot;],&quot;default&quot;:&quot;bonus&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Oferta&quot;},&quot;mostrarProvaSocial&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const start = () => {
+      const bar = document.getElementById("cta-fixo");
+      const heroi = document.querySelector("section");
+      if (!bar || !heroi) return setTimeout(start, 200);
+      this._obs = new IntersectionObserver(
+        ([e]) => bar.setAttribute("data-visivel", e.isIntersecting ? "0" : "1"),
+        { threshold: 0 }
+      );
+      this._obs.observe(heroi);
+      const ajusta = () => {
+        document.body.style.paddingBottom =
+          window.innerWidth <= 880 ? bar.offsetHeight + 16 + "px" : "";
+      };
+      this._ajusta = ajusta;
+      ajusta();
+      window.addEventListener("resize", ajusta);
+    };
+    start();
+  }
+  componentWillUnmount() {
+    if (this._obs) this._obs.disconnect();
+    if (this._ajusta) window.removeEventListener("resize", this._ajusta);
+  }
+  renderVals() {
+    const urgencia = this.props.urgencia ?? "bonus";
+    const textos = {
+      bonus: "Quem entrar nas primeiras 48 horas leva também o Guia de Videoconferências e Celular, que sai da oferta depois desse prazo. Essa condição de lançamento fica no ar até [DATA]. Não é pressão, é só o prazo que eu me comprometi a cumprir.",
+      lote: "Preço de lançamento de R$ 47 válido até [DATA REAL]. Depois dessa data o valor passa para R$ 97.",
+      nenhum: ""
+    };
+    return {
+      precoAtual: this.props.precoAtual ?? "R$ 47",
+      mostrarProvaSocial: this.props.mostrarProvaSocial ?? true,
+      mostrarUrgencia: urgencia !== "nenhum",
+      textoUrgencia: textos[urgencia] || ""
+    };
+  }
+}
+</script>
+</body>
+</html>
